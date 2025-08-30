@@ -15,28 +15,24 @@ export default async function DocsPage() {
     .order('updated_at', { ascending: false })
 
   return (
-    <main className="p-6 space-y-8">
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Prosedyrer</h2>
-        <ul className="list-disc pl-5">
-          {procs.map((p) => (
-            <li key={p.id}>
-              <Link href={`/docs/procedure/${p.id}`}>{p.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+    <>
+      <h2 className="text-xl font-semibold mb-2">Prosedyrer</h2>
+      <ul className="list-disc pl-5">
+        {procs.map((p: any) => (
+          <li key={p.id}>
+            <Link href={`/docs/procedure/${p.id}`}>{p.title}</Link>
+          </li>
+        ))}
+      </ul>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-2">Instrukser</h2>
-        <ul className="list-disc pl-5">
-          {instr.map((i) => (
-            <li key={i.id}>
-              <Link href={`/docs/instruction/${i.id}`}>{i.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+      <h2 className="text-xl font-semibold mt-8 mb-2">Instrukser</h2>
+      <ul className="list-disc pl-5">
+        {instr.map((i: any) => (
+          <li key={i.id}>
+            <Link href={`/docs/instruction/${i.id}`}>{i.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
