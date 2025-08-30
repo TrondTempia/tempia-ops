@@ -38,5 +38,3 @@ export default async function DocsPage() {
         </ul>
       </section>
     </main>
-  )
-}
