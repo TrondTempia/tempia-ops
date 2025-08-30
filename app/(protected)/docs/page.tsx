@@ -18,20 +18,28 @@ export default async function DocsPage() {
     <>
       <h2 className="text-xl font-semibold mb-2">Prosedyrer</h2>
       <ul className="list-disc pl-5">
-        {procs.map((p: any) => (
-          <li key={p.id}>
-            <Link href={`/docs/procedure/${p.id}`}>{p.title}</Link>
-          </li>
-        ))}
+        {procs.length === 0 ? (
+          <li className="text-gray-500">Ingen prosedyrer enda</li>
+        ) : (
+          procs.map((p: any) => (
+            <li key={p.id}>
+              <Link href={`/docs/procedure/${p.id}`}>{p.title}</Link>
+            </li>
+          ))
+        )}
       </ul>
 
       <h2 className="text-xl font-semibold mt-8 mb-2">Instrukser</h2>
       <ul className="list-disc pl-5">
-        {instr.map((i: any) => (
-          <li key={i.id}>
-            <Link href={`/docs/instruction/${i.id}`}>{i.title}</Link>
-          </li>
-        ))}
+        {instr.length === 0 ? (
+          <li className="text-gray-500">Ingen instrukser enda</li>
+        ) : (
+          instr.map((i: any) => (
+            <li key={i.id}>
+              <Link href={`/docs/instruction/${i.id}`}>{i.title}</Link>
+            </li>
+          ))
+        )}
       </ul>
     </>
   )
