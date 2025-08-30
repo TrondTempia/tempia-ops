@@ -4,12 +4,12 @@ import { supabaseServer } from '@/lib/supabaseServer'
 export default async function DocsPage() {
   const supabase = await supabaseServer()
 
-  const { data: procs } = await supabase
+  const { data: procs = [] } = await supabase
     .from('procedures')
     .select('id,title,updated_at')
     .order('updated_at', { ascending: false })
 
-  const { data: instr } = await supabase
+  const { data: instr = [] } = await supabase
     .from('instructions')
     .select('id,title,updated_at')
     .order('updated_at', { ascending: false })
@@ -19,7 +19,7 @@ export default async function DocsPage() {
       <section>
         <h2 className="text-xl font-semibold mb-2">Prosedyrer</h2>
         <ul className="list-disc pl-5">
-          {(procs ?? []).map(p => (
+          {procs.map((p) => (
             <li key={p.id}>
               <Link href={`/docs/procedure/${p.id}`}>{p.title}</Link>
             </li>
@@ -30,7 +30,7 @@ export default async function DocsPage() {
       <section>
         <h2 className="text-xl font-semibold mb-2">Instrukser</h2>
         <ul className="list-disc pl-5">
-          {(instr ?? []).map(i => (
+          {instr.map((i) => (
             <li key={i.id}>
               <Link href={`/docs/instruction/${i.id}`}>{i.title}</Link>
             </li>
@@ -38,3 +38,5 @@ export default async function DocsPage() {
         </ul>
       </section>
     </main>
+  )
+}
