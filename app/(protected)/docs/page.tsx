@@ -2,9 +2,11 @@ import Link from "next/link"
 import { supabaseServer } from "@/lib/supabaseServer"
 
 export default async function DocsPage() {
-  const supabase = supabaseServer()
+  const supabase = await supabaseServer()
   const { data: procs } = await supabase.from("procedures").select("id,title,updated_at").order("updated_at", { ascending: false })
   const { data: instr } = await supabase.from("instructions").select("id,title,updated_at").order("updated_at", { ascending: false })
+  ...
+}
 
   return (
     <div className="p-6 grid md:grid-cols-2 gap-6">
