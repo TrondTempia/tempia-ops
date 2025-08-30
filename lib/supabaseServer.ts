@@ -1,9 +1,13 @@
 import { cookies } from 'next/headers'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
-export async function supabaseServer() {
-  // VIKTIG: await cookies()
-  const cookieStore = await cookies()
+// Synkron variant med type-cast som funker i Next 15 build
+export function supabaseServer() {
+  // Noen Next-versjoner typer cookies() som Promise<...>. Vi caster for å kompilere stabilt.
+  const cookieStore = cookies() as unknown as { 
+    get: (name: string) => { value?: string } | undefined
+    set: (opts: { name: string; value: string } & CookieOptions) => void
+  }
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
