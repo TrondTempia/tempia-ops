@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
 export async function supabaseServer() {
+  // VIKTIG: await cookies()
   const cookieStore = await cookies()
 
   return createServerClient(
