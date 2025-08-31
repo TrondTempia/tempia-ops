@@ -158,7 +158,7 @@ export function BrandGuide() {
               </h4>
               <div className="space-y-4">
                 <div className="relative w-full h-48 overflow-hidden" style={{ borderRadius: 'var(--radius-md)' }}>
-                  <img 
+                  <Image 
                     src={backgroundImage} 
                     alt="Norwegian landscape background"
                     className="w-full h-full object-cover"
@@ -166,7 +166,7 @@ export function BrandGuide() {
                   <div className="absolute inset-0 bg-black bg-opacity-40"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white">
-                      <img 
+                      <Image 
                         src={tempiaLogo} 
                         alt="Tempia Logo"
                         className="h-12 w-auto object-contain brightness-0 invert mb-2 mx-auto"
