@@ -124,7 +124,7 @@ export function BrandGuide() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="bg-white p-8 border border-border flex items-center justify-center" style={{ borderRadius: 'var(--radius-md)' }}>
-                    <Image 
+                    <img 
                       src={tempiaLogo} 
                       alt="Tempia Logo"
                       width={128}
@@ -139,7 +139,7 @@ export function BrandGuide() {
                 </div>
                 <div className="space-y-4">
                   <div className="bg-neutral-700 p-8 border border-border flex items-center justify-center" style={{ borderRadius: 'var(--radius-md)' }}>
-                    <Image 
+                    <img 
                       src={tempiaLogo} 
                       alt="Tempia Logo"
                       width={128}
@@ -162,7 +162,7 @@ export function BrandGuide() {
               </h4>
               <div className="space-y-4">
                 <div className="relative w-full h-48 overflow-hidden" style={{ borderRadius: 'var(--radius-md)' }}>
-                  <Image 
+                  <img 
                     src={backgroundImage} 
                     alt="Norwegian landscape background"
                     fill
@@ -171,7 +171,7 @@ export function BrandGuide() {
                   <div className="absolute inset-0 bg-black bg-opacity-40"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center text-white">
-                      <Image 
+                      <img 
                         src={tempiaLogo} 
                         alt="Tempia Logo"
                         width={96}
