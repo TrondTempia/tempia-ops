@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button } from './Tempia/Button';
-import backgroundImage from 'figma:asset/613e80f2b0f7983c84f3c490c8567f726dcacd7d.png';
-import tempiaLogo from 'figma:asset/6eccd9abc8037b7532df8cba945c4a778aa40634.png';
+import backgroundImage from '../assets/login-bg.png';
+import tempiaLogo from '../assets/tempia-logo.png';
 
 interface LoginProps {
   onLogin: () => void;
@@ -25,7 +25,7 @@ export function Login({ onLogin }: LoginProps) {
     >
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image 
+        <img 
           src={backgroundImage} 
           alt="Norwegian landscape"
           fill
