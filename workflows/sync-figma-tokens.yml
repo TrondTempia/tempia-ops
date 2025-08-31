@@ -1,5 +1,5 @@
 name: 🎨 Sync Figma Design Tokens
-
+FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 on:
   # Run every 6 hours to check for token updates
   schedule:
