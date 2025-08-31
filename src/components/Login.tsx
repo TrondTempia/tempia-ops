@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button } from './Tempia/Button';
 import backgroundImage from '../assets/login-bg.png';
