@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { LogOut, Building, FileText } from "lucide-react";
 import { signOut } from "../lib/auth";
