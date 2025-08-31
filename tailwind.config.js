@@ -7,34 +7,29 @@ module.exports = {
     './pages/**/*.{ts,tsx}',
   ],
   theme: {
-    extend: {
-      colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        muted: 'hsl(var(--muted))',
-        'muted-foreground': 'hsl(var(--muted-foreground))',
-        card: 'hsl(var(--card))',
-        'card-foreground': 'hsl(var(--card-foreground))',
-        primary: 'hsl(var(--primary))',
-        'primary-foreground': 'hsl(var(--primary-foreground))',
-        secondary: 'hsl(var(--secondary))',
-        'secondary-foreground': 'hsl(var(--secondary-foreground))',
-        border: 'hsl(var(--border))',
-      },
-      // gjør at 'border' uten suffix bruker tokens dine
-      borderColor: {
-        DEFAULT: 'hsl(var(--border))',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
-      fontFamily: {
-        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-mono)', 'monospace'],
-      },
-    },
+extend: {
+  colors: {
+    primary: "var(--color-brand-primary)",
+    "primary-foreground": "var(--color-brand-foreground)",
+    muted: "var(--color-bg-muted)",
+    "muted-foreground": "var(--color-text-muted)",
+    success: "var(--color-success-bg)",
+    "success-foreground": "var(--color-success-fg)",
+    warning: "var(--color-warning-bg)",
+    "warning-foreground": "var(--color-warning-fg)",
+    danger: "var(--color-error-bg)",
+    "danger-foreground": "var(--color-error-fg)"
+  },
+  borderRadius: {
+    sm: "var(--radius-sm)",
+    md: "var(--radius-md)",
+    full: "var(--radius-full)"
+  },
+  fontSize: {
+    caption: ["var(--font-size-caption)", { lineHeight: "var(--leading-caption)" }],
+    "text-small": ["var(--font-size-text-small)", { lineHeight: "var(--leading-small)" }]
+  }
+}
   },
   plugins: [],
 };
