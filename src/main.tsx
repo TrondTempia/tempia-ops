@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./index.css";
+
+// ⬇️ Viktig: bruk globals.css (med @tailwind base/components/utilities øverst)
+import "../styles/globals.css";
 
 import LoginPage from "./pages/LoginPage";
 import BuildingsList from "./pages/BuildingsList";
@@ -17,53 +19,53 @@ function App() {
       <Routes>
         {/* Public routes */}
         <Route path="/login" element={<LoginPage />} />
-        
+
         {/* Protected routes */}
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
             <ProtectedRoute>
               <BuildingsList />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        <Route 
-          path="/bygg/:number" 
+
+        <Route
+          path="/bygg/:number"
           element={
             <ProtectedRoute>
               <BuildingDetail />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        <Route 
-          path="/procedures" 
+
+        <Route
+          path="/procedures"
           element={
             <ProtectedRoute>
               <ProceduresPage />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        <Route 
-          path="/bygg/:number/flow/:flowId" 
+
+        <Route
+          path="/bygg/:number/flow/:flowId"
           element={
             <ProtectedRoute>
               <FlowViewer />
             </ProtectedRoute>
-          } 
+          }
         />
-        
-        <Route 
-          path="/bygg/:number/flow/:flowId/edit" 
+
+        <Route
+          path="/bygg/:number/flow/:flowId/edit"
           element={
             <ProtectedRoute adminOnly>
               <FlowEditor />
             </ProtectedRoute>
-          } 
+          }
         />
-        
+
         {/* Catch all - redirect to login */}
         <Route path="*" element={<LoginPage />} />
       </Routes>
