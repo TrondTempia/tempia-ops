@@ -22,7 +22,7 @@ export function Login({ onLogin }: LoginProps) {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src={backgroundImage} 
+          src={backgroundImage.src} 
           alt="Norwegian landscape"
           className="w-full h-full object-cover"
         />
