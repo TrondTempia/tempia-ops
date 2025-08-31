@@ -124,7 +124,7 @@ export function BrandGuide() {
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <div className="bg-white p-8 border border-border flex items-center justify-center" style={{ borderRadius: 'var(--radius-md)' }}>
-                    <image 
+                    <Image 
                       src={tempiaLogo} 
                       alt="Tempia Logo"
                       className="h-16 w-auto object-contain"
