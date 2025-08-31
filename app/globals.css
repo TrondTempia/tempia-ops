@@ -1,4 +1,4 @@
-@import "../styles/tokens.css";
+@import "../src/styles/tokens.css";
 /* Enable Tailwind layers */
 @tailwind base;
 @tailwind components;
