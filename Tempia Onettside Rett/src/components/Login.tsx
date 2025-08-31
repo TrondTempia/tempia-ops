@@ -38,7 +38,7 @@ export function Login({ onLogin }: LoginProps) {
             {/* Tempia Logo */}
             <div className="mb-4 flex justify-center">
               <img 
-                src={tempiaLogo} 
+                src={tempiaLogo.src} 
                 alt="Tempia Logo"
                 className="h-12 w-auto object-contain"
               />
