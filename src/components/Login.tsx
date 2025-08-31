@@ -56,7 +56,7 @@ export function Login({ onLogin }: LoginProps) {
           >
             {/* Tempia Logo */}
             <div className="mb-4 flex justify-center">
-              <Image 
+              <img
                 src={tempiaLogo} 
                 alt="Tempia Logo"
                 width={120}
