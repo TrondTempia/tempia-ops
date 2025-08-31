@@ -1,4 +1,3 @@
-// IKKE importer React eller next/image her – vi bygger med Vite/React, ikke Next
 import { Button } from "./Tempia/Button";
 import { Card } from "./Tempia/Card";
 import { Badge } from "./Tempia/Badge";
