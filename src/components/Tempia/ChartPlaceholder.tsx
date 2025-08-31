@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ChartPlaceholderProps {
   type: 'line' | 'bar' | 'pie';
   title: string;
