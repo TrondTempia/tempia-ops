@@ -26,7 +26,7 @@ export default function BuildingsList() {
       await fetchBuildings();
       setLoading(false);
     };
-    init();
+    void init();
   }, []);
 
   const resolveRole = async () => {
@@ -38,18 +38,16 @@ export default function BuildingsList() {
     const { data, error } = await supabase
       .from("buildings")
       .select("*")
-      .order("number", { ascending: true })
-      .returns<BuildingData[]>();
+      .order("number", { ascending: true });
 
     if (error) {
       console.error("Feil ved henting av bygg:", error);
       return;
     }
-    setBuildings(data ?? []);
+    setBuildings((data ?? []) as BuildingData[]);
   };
 
   const createBuilding = async () => {
-    // Kun admin kan opprette
     if (userRole !== "admin") return;
 
     const numberInput = prompt("Byggnummer (f.eks. 40):");
@@ -67,19 +65,24 @@ export default function BuildingsList() {
       .from("buildings")
       .insert({ number: parsed, name: nameInput, address: addressInput })
       .select()
-      .single()
-      .returns<BuildingData>();
+      .single();
 
-    if (error) {
+    if (error || !data) {
       console.error("Feil ved opprettelse av bygg:", error);
       alert("Klarte ikke opprette bygg.");
       return;
     }
 
-    // legg til i lokal state og hold sortering på nummer
-    setBuildings((prev) =>
-      [...prev, data].sort((a, b) => a.number - b.number)
-    );
+    // Tving korrekt shape til TypeScript
+    const newBuilding: BuildingData = {
+      id: data.id,
+      number: data.number,
+      name: data.name,
+      address: data.address,
+      created_at: data.created_at,
+    };
+
+    setBuildings((prev) => [...prev, newBuilding].sort((a, b) => a.number - b.number));
   };
 
   const filtered = buildings.filter((b) => {
@@ -126,10 +129,7 @@ export default function BuildingsList() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-28 bg-muted rounded-lg animate-pulse"
-              />
+              <div key={i} className="h-28 bg-muted rounded-lg animate-pulse" />
             ))}
           </div>
         ) : filtered.length === 0 ? (
