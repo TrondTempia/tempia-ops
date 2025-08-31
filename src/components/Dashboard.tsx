@@ -41,7 +41,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
             >
               {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
-            <Image src={tempiaLogo} alt="Tempia" width={32} height={32} className="object-contain" />
+            <img src={tempiaLogo} alt="Tempia" width={32} height={32} className="object-contain" />
             <div className="hidden sm:block">
               <h1 style={{ fontSize: 'var(--text-h3)', fontWeight: 'var(--font-weight-semibold)' }}>
                 Operations Dashboard
