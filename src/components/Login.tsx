@@ -1,168 +1,69 @@
-import Image from 'next/image';
+// src/components/Login.tsx
+import { useState } from 'react';
 import { Button } from './Tempia/Button';
-import backgroundImage from '../assets/login-bg.png';
 import tempiaLogo from '../assets/tempia-logo.png';
+import loginBg from '../assets/login-bg.png';
 
-interface LoginProps {
-  onLogin: () => void;
-}
-
-// Frame: Login
-export function Login({ onLogin }: LoginProps) {
+export function Login({
+  onSuccess,
+}: {
+  onSuccess: () => void;
+}) {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    onLogin();
+    // TODO: koble til Supabase auth her
+    onSuccess();
   };
 
   return (
-    // Frame: Login
-    <div 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
-      style={{ backgroundColor: 'var(--color-bg-page)' }}
-    >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img 
-          src={backgroundImage} 
-          alt="Norwegian landscape"
-          fill
-          className="object-cover"
-          priority
-        />
-        {/* Dark overlay for better text contrast */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      </div>
+    <div className="relative min-h-screen">
+      {/* Bakgrunnsbilde */}
+      <img
+        src={loginBg}
+        alt="Norwegian landscape"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/40" />
 
-      {/* Login Card */}
-      <div className="relative z-10 w-full max-w-md">
-        <div 
-          className="backdrop-blur-sm overflow-hidden"
-          style={{ 
-            backgroundColor: 'var(--color-bg-surface)',
-            borderRadius: 'var(--card-radius)',
-            border: `1px solid var(--color-border-default)`,
-            boxShadow: 'var(--shadow-lg)'
-          }}
-        >
-          {/* Header */}
-          <div 
-            className="px-8 py-6 text-center"
-            style={{ 
-              borderBottom: `1px solid var(--color-border-default)`
-            }}
-          >
-            {/* Tempia Logo */}
-            <div className="mb-4 flex justify-center">
-              <Image 
-                src={tempiaLogo} 
-                alt="Tempia Logo"
-                width={120}
-                height={48}
-                className="object-contain"
+      {/* Kort */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen p-6">
+        <div className="w-full max-w-sm bg-card border border-border p-6 shadow-card"
+             style={{ borderRadius: 'var(--radius-component-lg)' }}>
+          <div className="mb-4 flex justify-center">
+            <img src={tempiaLogo} alt="Tempia" className="h-12 w-auto object-contain" />
+          </div>
+
+          <form onSubmit={submit} className="space-y-3">
+            <div>
+              <label className="block mb-1 text-sm text-muted-foreground">E-post</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full bg-background border border-border px-3 py-2"
+                style={{ borderRadius: 'var(--radius-component-sm)' }}
               />
             </div>
-            <p 
-              style={{ 
-                fontSize: 'var(--text-body-size)', 
-                lineHeight: 'var(--text-body-line-height)',
-                color: 'var(--color-text-secondary)'
-              }}
-            >
-              Verktøyside for ansatte
-            </p>
-          </div>
+            <div>
+              <label className="block mb-1 text-sm text-muted-foreground">Passord</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full bg-background border border-border px-3 py-2"
+                style={{ borderRadius: 'var(--radius-component-sm)' }}
+              />
+            </div>
 
-          {/* Form */}
-          <div className="px-8 py-6">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label 
-                  htmlFor="password" 
-                  className="block mb-2" 
-                  style={{ 
-                    fontSize: 'var(--text-body-size)', 
-                    lineHeight: 'var(--text-body-line-height)',
-                    fontWeight: 'var(--text-body-weight)',
-                    color: 'var(--color-text-primary)'
-                  }}
-                >
-                  Passord
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full transition-all focus:outline-none focus:ring-2"
-                  style={{ 
-                    borderRadius: 'var(--input-radius)',
-                    paddingLeft: 'var(--input-padding-x)',
-                    paddingRight: 'var(--input-padding-x)',
-                    paddingTop: 'var(--input-padding-y)',
-                    paddingBottom: 'var(--input-padding-y)',
-                    backgroundColor: 'var(--input-bg)',
-                    border: `1px solid var(--input-border)`,
-                    fontSize: 'var(--text-body-size)',
-                    lineHeight: 'var(--text-body-line-height)',
-                    color: 'var(--color-text-primary)'
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = 'var(--input-border-focus)';
-                    e.target.style.boxShadow = `0 0 0 2px var(--color-interactive-focus)`;
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = 'var(--input-border)';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                  placeholder="Skriv inn ditt passord"
-                  required
-                />
-              </div>
-
-              <Button type="submit" className="w-full">
-                Logg inn
-              </Button>
-
-              <div className="text-center">
-                <button
-                  type="button"
-                  className="transition-colors hover:opacity-80"
-                  style={{ 
-                    fontSize: 'var(--text-small-size)', 
-                    lineHeight: 'var(--text-small-line-height)',
-                    color: 'var(--color-brand-accent)',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Glemt passord?
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Footer */}
-          <div 
-            className="px-8 py-4"
-            style={{ 
-              backgroundColor: 'var(--color-bg-subtle)',
-              borderTop: `1px solid var(--color-border-default)`
-            }}
-          >
-            <p 
-              className="text-center" 
-              style={{ 
-                fontSize: 'var(--text-caption-size)', 
-                lineHeight: 'var(--text-caption-line-height)',
-                color: 'var(--color-text-secondary)'
-              }}
-            >
-              © 2025 Tempia. Sikker tilgang til verktøyside for ansatte.
-            </p>
-          </div>
+            <Button variant="primary" className="w-full mt-2" type="submit">
+              Logg inn
+            </Button>
+          </form>
         </div>
       </div>
     </div>
