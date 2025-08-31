@@ -34,6 +34,7 @@ export default function BuildingDetail() {
       fetchBuilding();
       checkUserRole();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [number]);
 
   const checkUserRole = async () => {
@@ -43,8 +44,12 @@ export default function BuildingDetail() {
 
   const fetchBuilding = async () => {
     try {
-      const buildingNumber = parseInt(number!);
-      
+      const buildingNumber = parseInt(number!, 10);
+      if (Number.isNaN(buildingNumber)) {
+        setLoading(false);
+        return;
+      }
+
       // Get building data
       const { data: buildingData, error: buildingError } = await supabase
         .from("buildings")
@@ -63,8 +68,7 @@ export default function BuildingDetail() {
         .order("created_at", { ascending: false });
 
       if (flowsError) throw flowsError;
-      setFlows(flowsData || []);
-
+      setFlows((flowsData ?? []) as Flow[]);
     } catch (error) {
       console.error("Error fetching building:", error);
     } finally {
@@ -76,14 +80,18 @@ export default function BuildingDetail() {
     if (!building) return;
 
     const title = prompt("Navn på ny prosessflyt:");
-    if (!title) return;
+    if (title === null) return; // Cancel
+    if (!title.trim()) {
+      alert("Du må skrive inn et navn");
+      return;
+    }
 
     try {
       const { data, error } = await supabase
         .from("flows")
         .insert({
           building_id: building.id,
-          title: title,
+          title: title.trim(),
         })
         .select()
         .single();
@@ -91,7 +99,7 @@ export default function BuildingDetail() {
       if (error) throw error;
 
       // Add to local state
-      setFlows([data, ...flows]);
+      setFlows((prev) => [data as Flow, ...prev]);
     } catch (error) {
       console.error("Error creating flow:", error);
       alert("Feil ved opprettelse av prosessflyt");
@@ -137,7 +145,7 @@ export default function BuildingDetail() {
   return (
     <div className="min-h-screen bg-background">
       <Header userRole={userRole} />
-      
+
       <div className="max-w-7xl mx-auto p-8">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
