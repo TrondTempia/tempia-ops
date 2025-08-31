@@ -1,9 +1,18 @@
-import { supabaseServer } from '@/lib/supabaseServer'
-import { redirect } from 'next/navigation'
+﻿import Link from "next/link";
 
-export default async function Protected({ children }: { children: React.ReactNode }) {
-  const supabase = await supabaseServer()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
-  return <>{children}</>
+type PageProps = {
+  params: { id: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+};
+
+export default function ProcedurePage({ params }: PageProps) {
+  const { id } = params;
+
+  return (
+    <main className="p-6">
+      <h1 className="text-xl font-medium">Prosedyre #{id}</h1>
+      <p>Her kommer innholdet for prosedyren.</p>
+      <Link href="/docs">← Tilbake til dokumenter</Link>
+    </main>
+  );
 }
