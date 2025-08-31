@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import tempiaLogo from "../assets/tempia-logo.png";
+import backgroundImage from "../assets/background.png";
 import { Button } from './Tempia/Button';
 import { Card } from './Tempia/Card';
 import { Badge } from './Tempia/Badge';
