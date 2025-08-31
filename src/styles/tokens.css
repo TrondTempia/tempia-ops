@@ -1,0 +1,54 @@
+:root {
+  /* Colors - Updated for Tempia Green Theme */
+  --color-primary: #116C41;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #DEE8E1;
+  --color-secondary-foreground: #1a2e20;
+  --color-muted: #f7f9f8;
+  --color-muted-foreground: #4a5c50;
+  --color-accent: #22c55e;
+  --color-accent-foreground: #ffffff;
+  
+  /* Login specific colors */
+  --color-login-primary: #DEE8E1;
+  --color-login-primary-foreground: #1a2e20;
+  --color-login-button: #116C41;
+  --color-login-button-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e2e8f0;
+  --color-input: #ffffff;
+  --color-ring: #3b82f6;
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-elevated: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --color-primary: #3b82f6;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f8fafc;
+  --color-muted: #0f172a;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: #60a5fa;
+  --color-accent-foreground: #0f172a;
+  --color-destructive: #f87171;
+  --color-destructive-foreground: #0f172a;
+  --color-border: #334155;
+  --color-input: #1e293b;
+  --color-background: #020617;
+  --color-foreground: #f8fafc;
+  --color-card: #0f172a;
+  --color-card-foreground: #f8fafc;
+}

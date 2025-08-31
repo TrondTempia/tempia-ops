@@ -1,0 +1,89 @@
+/**
+ * Tempia Design Tokens
+ * Auto-generated from Figma - Do not edit directly
+ */
+
+:root {
+  /* Brand Colors */
+  --color-brand-primary: #1e40af;
+  --color-brand-accent: #3b82f6;
+  
+  /* Text Colors */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #64748b;
+  --color-text-on-primary: #ffffff;
+  --color-text-on-accent: #ffffff;
+  
+  /* Background Colors */
+  --color-bg-page: #ffffff;
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f8fafc;
+  
+  /* Border & Interactive */
+  --color-border-default: #e2e8f0;
+  --color-interactive-focus: #3b82f6;
+  
+  /* State Colors */
+  --color-state-success: #10b981;
+  --color-state-warning: #f59e0b;
+  --color-state-error: #ef4444;
+  
+  /* Slate Scale (for fallbacks) */
+  --color-slate-50: #f8fafc;
+  --color-slate-300: #cbd5e1;
+  --color-slate-900: #0f172a;
+  
+  /* Radius */
+  --radius-component-sm: 2px;
+  --radius-component-md: 4px;
+  --radius-component-lg: 6px;
+  
+  /* Typography */
+  --text-display-size: 2.5rem;
+  --text-h1-size: 2rem;
+  --text-h2-size: 1.5rem;
+  --text-h3-size: 1.25rem;
+  --text-body-size: 1rem;
+  --text-small-size: 0.875rem;
+  --text-caption-size: 0.75rem;
+  
+  --text-display-line-height: 1.2;
+  --text-h1-line-height: 1.3;
+  --text-h2-line-height: 1.4;
+  --text-h3-line-height: 1.4;
+  --text-body-line-height: 1.5;
+  --text-small-line-height: 1.5;
+  --text-caption-line-height: 1.4;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+.dark {
+  /* Brand Colors - Adjusted for dark mode */
+  --color-brand-primary: #3b82f6;
+  --color-brand-accent: #60a5fa;
+  
+  /* Text Colors */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  --color-text-on-primary: #0f172a;
+  --color-text-on-accent: #0f172a;
+  
+  /* Background Colors */
+  --color-bg-page: #020617;
+  --color-bg-surface: #0f172a;
+  --color-bg-subtle: #1e293b;
+  
+  /* Border & Interactive */
+  --color-border-default: #334155;
+  --color-interactive-focus: #60a5fa;
+  
+  /* State Colors - Slightly adjusted for dark mode */
+  --color-state-success: #34d399;
+  --color-state-warning: #fbbf24;
+  --color-state-error: #f87171;
+}
