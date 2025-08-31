@@ -41,8 +41,8 @@ export function Dashboard({ onLogout }: DashboardProps) {
           <div className="flex items-center gap-8">
             {/* Logo/Brand */}
             <div className="flex items-center">
-              <Image 
-                src={tempiaLogo} 
+              <img 
+                src={tempiaLogo.src} 
                 alt="Tempia Logo"
                 className="h-8 w-auto object-contain"
               />
