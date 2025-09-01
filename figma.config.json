@@ -12,12 +12,12 @@
       "output": "assets/figma/components"
     },
     {
-      "name": "icons-page-as-svg",
-      "match": ["^Icons\\/.*$"],
-      "types": ["FRAME", "GROUP", "COMPONENT", "VECTOR", "INSTANCE"],
+      "name": "all-as-svg",
+      "match": ["^.*$"],
+      "types": ["FRAME", "GROUP", "VECTOR", "INSTANCE"],
       "format": "svg",
       "scale": 1,
-      "output": "assets/figma/icons"
+      "output": "assets/figma/all"
     }
   ]
 }
