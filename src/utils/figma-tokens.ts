@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import fs from 'fs';
 
 const FIGMA_FILE_ID = process.env.FIGMA_FILE_ID;
