@@ -1,5 +1,5 @@
 {
-  "fileKey": "",
+  "fileKey": "iWOdfts5H17fHjAzfXiK5D",
   "includePages": [],
   "excludePages": [],
   "export": [
@@ -10,14 +10,6 @@
       "format": "svg",
       "scale": 1,
       "output": "assets/figma/components"
-    },
-    {
-      "name": "all-as-svg",
-      "match": ["^.*$"],
-      "types": ["FRAME", "GROUP", "VECTOR", "INSTANCE"],
-      "format": "svg",
-      "scale": 1,
-      "output": "assets/figma/all"
     }
   ]
 }
