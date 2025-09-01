@@ -15,9 +15,11 @@ concurrency:
 jobs:
   export:
     runs-on: ubuntu-latest
+    # Sett dette til environment-navnet ditt hvis secrets/vars ligger der:
+    environment: Production
     env:
-      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN || vars.FIGMA_TOKEN }}
-      FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY || vars.FIGMA_FILE_KEY }}
+      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,6 +28,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      - name: Preflight: verify configuration
+        run: |
+          if [ -z "${FIGMA_TOKEN}" ]; then
+            echo "FIGMA_TOKEN is empty or not set (check environment/repo secrets)."; exit 1;
+          fi
+          if [ -z "${FIGMA_FILE_KEY}" ]; then
+            echo "FIGMA_FILE_KEY is empty or not set (check environment/repo secrets)."; exit 1;
+          fi
+          echo "Config OK."
 
       - name: Run export
         run: node scripts/figma-export.mjs
