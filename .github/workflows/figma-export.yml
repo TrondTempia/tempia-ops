@@ -18,8 +18,8 @@ jobs:
     # Sett dette til environment-navnet ditt hvis secrets/vars ligger der:
     environment: Production
     env:
-      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-      FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN != '' && secrets.FIGMA_TOKEN || vars.FIGMA_TOKEN }}
+      FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY != '' && secrets.FIGMA_FILE_KEY || vars.FIGMA_FILE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
