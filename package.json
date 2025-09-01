@@ -1,6 +1,7 @@
 
-  {
-      "name": "Tempia Nettside V3",
+ {
+  "name": "tempia-nettside-v3",
+  "private": true,
       "version": "0.1.0",
       "private": true,
       "dependencies": {
