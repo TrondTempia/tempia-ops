@@ -1,0 +1,15 @@
+{
+  "fileKey": "iWOdfts5H17fHjAzfXiK5D",
+  "includePages": [],
+  "excludePages": [],
+  "export": [
+    {
+      "name": "components-as-svg",
+      "match": ["^.*$"],
+      "types": ["COMPONENT", "COMPONENT_SET"],
+      "format": "svg",
+      "scale": 1,
+      "output": "assets/figma/components"
+    }
+  ]
+}
