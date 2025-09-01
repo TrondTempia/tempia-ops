@@ -1,1 +1,44 @@
-{\n  "name": "tempia-ops",\n  "private": true,\n  "version": "0.1.0",\n  "type": "module",\n  "scripts": {\n    "dev": "vite",\n    "build": "tsc && vite build",\n    "preview": "vite preview",\n    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",\n    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\""\n  },\n  "dependencies": {\n    "@radix-ui/react-accordion": "^1.2.3",\n    "@supabase/supabase-js": "^2.45.0",\n    "clsx": "^2.1.1",\n    "lucide-react": "^0.487.0",\n    "react": "^18.3.1",\n    "react-dom": "^18.3.1",\n    "react-router-dom": "^6.26.2",\n    "reactflow": "^11.10.4",\n    "tailwind-merge": "^2.5.2"\n  },\n  "devDependencies": {\n    "@types/node": "^20.14.2",\n    "@types/react": "^18.3.3",\n    "@types/react-dom": "^18.3.0",\n    "@typescript-eslint/eslint-plugin": "^6.14.0",\n    "@typescript-eslint/parser": "^6.14.0",\n    "@vitejs/plugin-react-swc": "^3.5.0",\n    "autoprefixer": "^10.4.16",\n    "eslint": "^8.55.0",\n    "eslint-plugin-react-hooks": "^4.6.0",\n    "eslint-plugin-react-refresh": "^0.4.5",\n    "postcss": "^8.4.32",\n    "prettier": "^3.1.1",\n    "tailwindcss": "^3.3.6",\n    "typescript": "^5.2.2",\n    "vite": "^5.0.8"\n  }\n}
+{
+  "name": "tempia-ops",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\""
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@supabase/supabase-js": "^2.45.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.487.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "reactflow": "^11.10.4",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
