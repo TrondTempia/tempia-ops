@@ -1,0 +1,41 @@
+name: Figma Export Sync
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 * * * *" # hver time (juster etter behov)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: figma-export
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    env:
+      FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      FIGMA_FILE_KEY: ${{ secrets.FIGMA_FILE_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run export
+        run: node scripts/figma-export.mjs
+
+      - name: Commit and push changes (direct to current branch)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(figma): sync exports"
+          file_pattern: |
+            assets/figma/**
+            figma.config.json
+          commit_user_name: github-actions[bot]
+          commit_user_email: github-actions[bot]@users.noreply.github.com
