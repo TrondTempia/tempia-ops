@@ -8,8 +8,27 @@ const FIGMA_TOKEN = process.env.FIGMA_TOKEN;
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
 
 if (!FIGMA_TOKEN) {
-  console.error("FIGMA_TOKEN mangler (sett som repo secret).");
+  console.error("FIGMA_TOKEN mangler (sett som repo secret).\nSe repo Settings → Secrets and variables → Actions → FIGMA_TOKEN");
   process.exit(1);
+}
+
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const out = {};
+  for (const a of args) {
+    const m = a.match(/^--?([^=]+)=(.*)$/);
+    if (m) out[m[1]] = m[2];
+  }
+  return out;
+}
+
+async function readJsonIfExists(p) {
+  try {
+    const raw = await fs.readFile(p, "utf8");
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
 }
 
 async function readConfig() {
@@ -29,13 +48,16 @@ async function readConfig() {
     ]
   };
 
-  try {
-    const raw = await fs.readFile("figma.config.json", "utf8");
-    const cfg = JSON.parse(raw);
-    return { ...defaultConfig, ...cfg, export: cfg.export || defaultConfig.export };
-  } catch {
-    return defaultConfig;
+  // Prøv rotkonfig først, deretter fallback til figma.config/new-config.json
+  const rootCfg = await readJsonIfExists("figma.config.json");
+  if (rootCfg) {
+    return { ...defaultConfig, ...rootCfg, export: rootCfg.export || defaultConfig.export };
   }
+  const altCfg = await readJsonIfExists("figma.config/new-config.json");
+  if (altCfg) {
+    return { ...defaultConfig, ...altCfg, export: altCfg.export || defaultConfig.export };
+  }
+  return defaultConfig;
 }
 
 function compileRegex(list) {
@@ -84,7 +106,30 @@ async function fetchBuffer(url) {
 
 async function getFileTree(fileKey) {
   const url = `https://api.figma.com/v1/files/${fileKey}`;
-  return fetchJson(url, { "X-Figma-Token": FIGMA_TOKEN });
+  try {
+    return await fetchJson(url, { "X-Figma-Token": FIGMA_TOKEN });
+  } catch (e) {
+    const msg = String(e && e.message ? e.message : e);
+    if (msg.includes("File type not supported by this endpoint")) {
+      throw new Error(
+        "Figma svarte: 'File type not supported by this endpoint'.\n" +
+          "Dette tyder ofte på at fileKey peker til en FigJam/whiteboard. 'v1/files' støtter kun Design-filer.\n" +
+          "Åpne design-filen i Figma og kopier nøkkelen etter /file/ i URL-en."
+      );
+    }
+    if (msg.includes("HTTP 403") || msg.toLowerCase().includes("forbidden")) {
+      throw new Error(
+        "Figma svarte 403 Forbidden. Sjekk at FIGMA_TOKEN har gyldig tilgang til filen, " +
+          "og at du eventuelt er innlogget/har blitt delt inn i filens team."
+      );
+    }
+    if (msg.includes("HTTP 404")) {
+      throw new Error(
+        "Figma svarte 404 Not Found. Kontroller at fileKey er korrekt (kopiert fra riktig Design-fil)."
+      );
+    }
+    throw e;
+  }
 }
 
 function walkNodes(node, currentPath = [], out = []) {
@@ -138,14 +183,26 @@ async function exportImages(fileKey, ids, format, scale) {
 }
 
 async function run() {
+  const args = parseArgs();
   const cfg = await readConfig();
-  const fileKey = cfg.fileKey || FIGMA_FILE_KEY;
+
+  const argKey = args.fileKey || args["file-key"] || "";
+  let fileKey = argKey || FIGMA_FILE_KEY || cfg.fileKey;
+  let fileKeySource = argKey ? "cli" : FIGMA_FILE_KEY ? "env" : cfg.fileKey ? "config" : "";
+
   if (!fileKey) {
-    console.error("FIGMA_FILE_KEY mangler (sett i figma.config.json eller som secret).");
+    console.error(
+      "FIGMA_FILE_KEY mangler. Oppgi en av følgende:\n" +
+        " - Sett env/secret FIGMA_FILE_KEY, eller\n" +
+        " - Legg 'fileKey' i figma.config.json (eller figma.config/new-config.json), eller\n" +
+        " - Kjør med CLI: node scripts/figma-export.mjs --fileKey=YOUR_KEY\n"
+    );
     process.exit(1);
   }
 
+  console.log(`Bruker fileKey fra: ${fileKeySource}`);
   console.log(`Henter Figma-fil: ${fileKey}`);
+
   const file = await getFileTree(fileKey);
   const document = file.document;
   if (!document) throw new Error("Ugyldig Figma-respons: mangler document");
@@ -155,7 +212,7 @@ async function run() {
   const excludePagesRe = compileRegex(cfg.excludePages || []);
   const candidates = filterNodes(all, includePagesRe, excludePagesRe);
 
-  const groups = groupByExportRules(candidates, cfg.export || []);
+  const groups = groupByExportRules(candidates, (cfg.export || []));
 
   // Ekstra logging for å sikre treff
   console.log(`Kandidater totalt etter sidefiltre: ${candidates.length}`);
