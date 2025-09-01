@@ -1,0 +1,23 @@
+{
+  "fileKey": "",
+  "includePages": [],
+  "excludePages": [],
+  "export": [
+    {
+      "name": "components-as-svg",
+      "match": ["^.*$"],
+      "types": ["COMPONENT", "COMPONENT_SET"],
+      "format": "svg",
+      "scale": 1,
+      "output": "assets/figma/components"
+    },
+    {
+      "name": "icons-page-as-svg",
+      "match": ["^Icons\\/.*$"],
+      "types": ["FRAME", "GROUP", "COMPONENT", "VECTOR", "INSTANCE"],
+      "format": "svg",
+      "scale": 1,
+      "output": "assets/figma/icons"
+    }
+  ]
+}
