@@ -1,0 +1,258 @@
+/**
+ * Tempia Design Tokens
+ * Auto-generated from Figma - DO NOT EDIT MANUALLY
+ * Last updated: 2025-08-31
+ */
+
+/* ===========================================
+ * BASE TOKENS (Raw values from Figma)
+ * =========================================== */
+
+/* Colors */
+:root {
+  /* Base color palette */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  
+  /* Tempia brand colors */
+  --color-tempia-green-50: #f0f9f4;
+  --color-tempia-green-100: #dcf2e4;
+  --color-tempia-green-200: #bee3cd;
+  --color-tempia-green-300: #94d1a8;
+  --color-tempia-green-400: #65ba7d;
+  --color-tempia-green-500: #449a5c;
+  --color-tempia-green-600: #337d48;
+  --color-tempia-green-700: #2a653b;
+  --color-tempia-green-800: #245130;
+  --color-tempia-green-900: #1f4329;
+  
+  /* State colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+}
+
+/* ===========================================
+ * SEMANTIC TOKENS (Contextual usage)
+ * =========================================== */
+
+:root {
+  /* Brand colors */
+  --color-brand-primary: var(--color-tempia-green-600);
+  --color-brand-secondary: var(--color-tempia-green-500);
+  --color-brand-accent: var(--color-tempia-green-400);
+  
+  /* Background colors */
+  --color-bg-page: var(--color-slate-50);
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: var(--color-slate-100);
+  --color-bg-muted: var(--color-slate-200);
+  
+  /* Text colors */
+  --color-text-primary: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-600);
+  --color-text-muted: var(--color-slate-500);
+  --color-text-disabled: var(--color-slate-400);
+  --color-text-on-primary: #ffffff;
+  --color-text-on-accent: #ffffff;
+  
+  /* Border colors */
+  --color-border-default: var(--color-slate-200);
+  --color-border-subtle: var(--color-slate-100);
+  --color-border-strong: var(--color-slate-300);
+  
+  /* Interactive colors */
+  --color-interactive-focus: var(--color-tempia-green-500);
+  --color-interactive-hover: var(--color-tempia-green-50);
+  
+  /* State colors */
+  --color-state-success: var(--color-success);
+  --color-state-warning: var(--color-warning);
+  --color-state-error: var(--color-error);
+  --color-state-info: var(--color-info);
+}
+
+/* ===========================================
+ * SPACING TOKENS (8pt grid system)
+ * =========================================== */
+
+:root {
+  --space-0: 0;
+  --space-1: 4px;   /* 0.5 units */
+  --space-2: 8px;   /* 1 unit */
+  --space-3: 12px;  /* 1.5 units */
+  --space-4: 16px;  /* 2 units */
+  --space-5: 20px;  /* 2.5 units */
+  --space-6: 24px;  /* 3 units */
+  --space-8: 32px;  /* 4 units */
+  --space-10: 40px; /* 5 units */
+  --space-12: 48px; /* 6 units */
+  --space-16: 64px; /* 8 units */
+  --space-20: 80px; /* 10 units */
+  --space-24: 96px; /* 12 units */
+  
+  /* Semantic spacing */
+  --space-component-xs: var(--space-1);
+  --space-component-sm: var(--space-2);
+  --space-component-md: var(--space-4);
+  --space-component-lg: var(--space-6);
+  --space-component-xl: var(--space-8);
+  
+  --space-layout-xs: var(--space-4);
+  --space-layout-sm: var(--space-6);
+  --space-layout-md: var(--space-8);
+  --space-layout-lg: var(--space-12);
+  --space-layout-xl: var(--space-16);
+}
+
+/* ===========================================
+ * TYPOGRAPHY TOKENS
+ * =========================================== */
+
+:root {
+  /* Font families */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Font sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Semantic typography tokens */
+  --text-display-size: var(--font-size-4xl);
+  --text-display-line-height: var(--line-height-tight);
+  
+  --text-h1-size: var(--font-size-3xl);
+  --text-h1-line-height: var(--line-height-tight);
+  
+  --text-h2-size: var(--font-size-2xl);
+  --text-h2-line-height: var(--line-height-snug);
+  
+  --text-h3-size: var(--font-size-xl);
+  --text-h3-line-height: var(--line-height-snug);
+  
+  --text-body-size: var(--font-size-base);
+  --text-body-line-height: var(--line-height-normal);
+  --text-body-weight: var(--font-weight-normal);
+  
+  --text-small-size: var(--font-size-sm);
+  --text-small-line-height: var(--line-height-normal);
+  
+  --text-caption-size: var(--font-size-xs);
+  --text-caption-line-height: var(--line-height-normal);
+}
+
+/* ===========================================
+ * BORDER RADIUS TOKENS
+ * =========================================== */
+
+:root {
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 9999px;
+  
+  /* Semantic radius tokens */
+  --radius-component-sm: var(--radius-sm);
+  --radius-component-md: var(--radius-md);
+  --radius-component-lg: var(--radius-lg);
+  
+  --radius-button: var(--radius-sm);
+  --radius-card: var(--radius-lg);
+  --radius-input: var(--radius-sm);
+}
+
+/* ===========================================
+ * COMPONENT TOKENS
+ * =========================================== */
+
+:root {
+  /* Button tokens */
+  --button-bg-primary: var(--color-brand-primary);
+  --button-bg-secondary: var(--color-bg-subtle);
+  --button-text-primary: var(--color-text-on-primary);
+  --button-text-secondary: var(--color-text-primary);
+  --button-radius: var(--radius-button);
+  --button-padding-x: var(--space-4);
+  --button-padding-y: var(--space-3);
+  
+  /* Card tokens */
+  --card-bg: var(--color-bg-surface);
+  --card-border: var(--color-border-default);
+  --card-radius: var(--radius-card);
+  --card-padding: var(--space-6);
+  --card-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04);
+  
+  /* Input tokens */
+  --input-bg: var(--color-bg-surface);
+  --input-border: var(--color-border-default);
+  --input-border-focus: var(--color-interactive-focus);
+  --input-text: var(--color-text-primary);
+  --input-placeholder: var(--color-text-muted);
+  --input-radius: var(--radius-input);
+  --input-padding-x: var(--space-3);
+  --input-padding-y: var(--space-3);
+  
+  /* Navigation tokens */
+  --nav-bg: var(--color-bg-surface);
+  --nav-border: var(--color-border-default);
+  --nav-item-hover: var(--color-interactive-hover);
+  --nav-item-active: var(--color-brand-primary);
+}
+
+/* ===========================================
+ * DARK THEME OVERRIDES
+ * =========================================== */
+
+.dark {
+  /* Background colors */
+  --color-bg-page: var(--color-slate-900);
+  --color-bg-surface: var(--color-slate-800);
+  --color-bg-subtle: var(--color-slate-700);
+  --color-bg-muted: var(--color-slate-600);
+  
+  /* Text colors */
+  --color-text-primary: var(--color-slate-50);
+  --color-text-secondary: var(--color-slate-300);
+  --color-text-muted: var(--color-slate-400);
+  --color-text-disabled: var(--color-slate-500);
+  
+  /* Border colors */
+  --color-border-default: var(--color-slate-700);
+  --color-border-subtle: var(--color-slate-800);
+  --color-border-strong: var(--color-slate-600);
+  
+  /* Interactive colors */
+  --color-interactive-hover: var(--color-slate-800);
+}
