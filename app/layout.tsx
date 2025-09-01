@@ -1,0 +1,1 @@
+DELETED - Next.js layout removed
