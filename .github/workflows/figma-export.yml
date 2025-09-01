@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Preflight: verify configuration
+      - name: "Preflight: verify configuration"
         run: |
           echo "FIGMA_TOKEN set? $([ -n "${FIGMA_TOKEN}" ] && echo yes || echo no)"
           echo "FIGMA_FILE_KEY set? $([ -n "${FIGMA_FILE_KEY}" ] && echo yes || echo no)"
