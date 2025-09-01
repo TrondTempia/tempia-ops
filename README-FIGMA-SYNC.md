@@ -5,7 +5,7 @@ Automatisk eksport av assets fra en Figma-fil til repoet.
 ## Forutsetninger
 - Repo-secrets:
   - `FIGMA_TOKEN` – Figma Personal Access Token med filtilgang.
-  - `FIGMA_FILE_KEY` – Filnøkkel fra Figma-URLen.
+  - `FIGMA_FILE_KEY` – iWOdfts5H17fHjAzfXiK5D
 
 ## Kjøring
 - Actions → "Figma Export Sync" → Run workflow (manuelt), eller vent på cron (hver time).
