@@ -1,8 +1,8 @@
 name: "🎨 Sync Figma Design Tokens"
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'     # hver 6. time
+ schedule:
+    - cron: '*/10 * * * *'
   workflow_dispatch:
     inputs:
       force_update:
