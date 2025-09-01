@@ -156,6 +156,21 @@ async function run() {
   const candidates = filterNodes(all, includePagesRe, excludePagesRe);
 
   const groups = groupByExportRules(candidates, cfg.export || []);
+
+  // Ekstra logging for å sikre treff
+  console.log(`Kandidater totalt etter sidefiltre: ${candidates.length}`);
+  if (groups.length === 0) {
+    console.log("Ingen regler ga treff. Sjekk match/typer/output i figma.config.json.");
+  } else {
+    console.log("Regeloppsummering:");
+    for (const { rule, nodes } of groups) {
+      const fmt = (rule.format || "svg").toLowerCase();
+      const out = rule.output || `assets/figma/${slugify(rule.name || "export")}`;
+      const scale = rule.scale || 1;
+      console.log(` - ${rule.name || "unnamed"}: ${nodes.length} treff -> ${out} (format=${fmt}, scale=${scale})`);
+    }
+  }
+
   let totalDownloads = 0;
   let totalWritten = 0;
 
